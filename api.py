@@ -42,9 +42,9 @@ def configure_ngrok():
 
 def update_soul_txt(public_url):
     try:
-        with open("bgmi4", "w") as file:
+        with open("bgmi5", "w") as file:
             file.write(public_url)
-        logging.info(f"New ngrok link saved in bgmi4")
+        logging.info(f"New ngrok link saved in bgmi5")
     except Exception as e:
         logging.error(f"Failed to save ngrok link: {str(e)}")
 
@@ -58,13 +58,13 @@ def update_vps_soul_txt(public_url):
         ssh.set_missing_host_key_policy(paramiko.AutoAddPolicy())
         ssh.connect(vps_ip, username=vps_user, password=vps_password)
         sftp = ssh.open_sftp()
-        with sftp.open("bgmi4", "w") as file:
+        with sftp.open("bgmi5", "w") as file:
             file.write(public_url)
         sftp.close()
         ssh.close()
-        logging.info("Updated bgmi4 on VPS successfully.")
+        logging.info("Updated bgmi5 on VPS successfully.")
     except Exception as e:
-        logging.error(f"Failed to update bgmi4 on VPS: {str(e)}")
+        logging.error(f"Failed to update bgmi5 on VPS: {str(e)}")
 
 def execute_command_async(command, duration):
     def run(command_id):
